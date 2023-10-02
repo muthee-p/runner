@@ -1,0 +1,121 @@
+
+body{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.body{
+	width: 800px;
+	height: 400px;
+	   margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #000;
+      animation: scrollBackground 10s linear infinite; 
+		background-image: url("images/bg.png");      
+		background-size: auto 100%;
+      background-repeat: repeat-x;
+      border: 1px solid black;
+		animation: bgScroll 40s linear infinite;
+}
+
+
+.game {
+	width: 800px;
+	height: 400px;
+	border: 1px solid black;
+	margin: auto;
+	
+}
+
+@keyframes bgScroll {
+        0% {
+    background-position: -300px 0;
+  }
+  100% {
+    background-position: calc(100% - 300px) 0; 
+  
+}
+}
+
+#runner {
+	width: 45px;
+	height: 45px;
+	position: relative;
+	top: 330px;
+	left: 20px;
+
+	background-image: url("images/runner.png");
+	background-size: 45px 45px;
+
+}
+
+.jump{
+	animation: jump 0.5s linear;
+}
+@keyframes jump{
+	0%{
+		top: 330px;
+	}
+	30%{
+		top: 270px;
+	}
+	50%{
+		top: 260px;
+	}
+	80%{
+		top: 270px;
+	}
+	100%{
+		top: 330px;
+	}
+}
+
+#obstacle {
+	width: 40px;
+	height: 80px;
+	position: relative;
+	top: 270px;
+	left: 580px;
+
+	background-image: url("images/obstacle.svg");
+	background-size: 40px 80px;
+
+	animation: block 2s infinite linear;
+}
+
+@keyframes block{
+	0%{
+		left:580px;
+	}
+	100% {
+		left: 0px ;
+	}
+}
+
+#score{
+	position: relative;
+	left: 660px;
+	top: 10px;
+}
+
+#ground {
+	width: 1200px;
+	height: 7px;
+	position: relative;
+	top: 375px;
+	left: 0px;
+
+	background-color: gray;
+
+	animation: ground 2s infinite linear;
+}
+
+@keyframes ground{
+	0%{
+		left:0px;
+	}
+	100% {
+		left: 0px ;
+	}
+}
