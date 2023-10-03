@@ -50,13 +50,13 @@ document.addEventListener("DOMContentLoaded", function () {
     gameOverModal.style.display = "none";
     startButton.style.display = "block";
 
-    // Add the event listener to the "Start Game" button
+    
     startButton.addEventListener("click", startGame);
   }
 
   startButton.addEventListener("click", function () {
     startGame();
-    // Remove the event listener from the "Start Game" button after starting the game
+    
     startButton.removeEventListener("click", startGame);
   });
 
@@ -64,31 +64,33 @@ document.addEventListener("DOMContentLoaded", function () {
     resetGame();
   });
 
+
+
   let isAlive = setInterval(function () {
-    let runnerTop = parseInt(
-      window.getComputedStyle(runner).getPropertyValue("top")
-    );
+   if (isPlaying) {
+   
+    const runnerRect = runner.getBoundingClientRect();
+    const obstacleRect = obstacle.getBoundingClientRect();
 
-    let obstacleLeft = parseInt(
-      window.getComputedStyle(obstacle).getPropertyValue("left")
-    );
-
-    let obstacleTop = parseInt(
-      window.getComputedStyle(obstacle).getPropertyValue("top")
-    );
-
-    let obstacleHeight = parseInt(
-      window.getComputedStyle(obstacle).getPropertyValue("height")
-    );
-
+   
     if (
-      isPlaying &&
-      obstacleLeft < 20 + 40 &&
-      obstacleLeft + 30 > 20 &&
-      runnerTop + 40 >= obstacleTop &&
-      runnerTop <= obstacleTop + 40
+      runnerRect.left < obstacleRect.right &&
+      runnerRect.right > obstacleRect.left &&
+      runnerRect.top < obstacleRect.bottom &&
+      runnerRect.bottom > obstacleRect.top
     ) {
+    	const collisionX = Math.max(runnerRect.left, obstacleRect.left);
+      const collisionY = Math.max(runnerRect.top, obstacleRect.top);
+
+
       clearInterval(isAlive);
+
+        runner.style.left = collisionX + 'px';
+      	obstacle.style.left = collisionX + 'px';
+      	runner.style.top = collisionY + 'px';
+      	obstacle.style.top = collisionY + 'px';
+
+
       endGame();
     } else {
       if (isPlaying) {
@@ -96,6 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
         scoreElement.textContent = score.toString().padStart(6, '0');
       }
     }
+}
   }, 100);
 
   document.addEventListener("keydown", function (event) {
