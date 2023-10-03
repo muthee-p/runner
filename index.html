@@ -7,16 +7,24 @@
 	<title>Runner</title>
 </head>
 <body>
-	<div class="body">
+	<div id="gameContainer">
 		<div class="game">
 		<div id="score">000000</div>
 		<div id="ground"></div>
 		<div id="runner"></div>
 		<div id="obstacle"></div>
-
 		
 	</div>
 	</div>
+
+	 <button id="startButton">Start Game</button>
+
+  <div class="modal" id="gameOverModal">
+    <div class="modal-content">
+      <h2>Game Over</h2>
+      <p>Your Score: <span id="modalScore">000000</span></p>
+      <button id="restartButton">Restart</button>
+    </div>
 	
 
 

@@ -3,20 +3,21 @@ body{
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
 }
-.body{
+#gameContainer{
 	width: 800px;
 	height: 400px;
-	   margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background-color: #000;
-      animation: scrollBackground 10s linear infinite; 
-		background-image: url("images/bg.png");      
-		background-size: auto 100%;
-      background-repeat: repeat-x;
-      border: 1px solid black;
-		animation: bgScroll 40s linear infinite;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #000;
+	animation: scrollBackground 10s linear infinite; 
+	background-image: url("images/bg.png");      
+	background-size: auto 100%;
+	background-repeat: repeat-x;
+	border: 1px solid black;
+		
 }
 
 
@@ -72,21 +73,21 @@ body{
 }
 
 #obstacle {
-	width: 40px;
-	height: 80px;
+	width: 30px;
+	height: 40px;
 	position: relative;
-	top: 270px;
-	left: 580px;
+	top: 290px;
+	left: 880px;
 
-	background-image: url("images/obstacle.svg");
-	background-size: 40px 80px;
+	background-image: url("images/obstacle.png");
+	background-size: 30px 40px;
 
-	animation: block 2s infinite linear;
+	
 }
 
 @keyframes block{
 	0%{
-		left:580px;
+		left:880px;
 	}
 	100% {
 		left: 0px ;
@@ -97,6 +98,8 @@ body{
 	position: relative;
 	left: 660px;
 	top: 10px;
+	font-family: monospace;
+	font-size: 16px;
 }
 
 #ground {
@@ -119,3 +122,37 @@ body{
 		left: 0px ;
 	}
 }
+
+
+.modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      text-align: center;
+      border-radius: 10px;
+    }
+
+    #restartButton, #startButton{
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #startButton{
+    	margin-top: 2rem;
+    }
